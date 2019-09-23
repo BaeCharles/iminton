@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, InputGroup } from 'react-bootstrap';
+
 import Layout from '../component/Layout';
 
 class Login extends Component {
@@ -24,23 +25,33 @@ class Login extends Component {
         return (
             <div>
                 <Layout>
-                    <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-                        <Form.Group controlId="formBasicEmail">
+                    <Form className='member_form' noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+                        <Form.Group controlId="nick">
                             <Form.Label>닉네임</Form.Label>
-                            <Form.Control type="text" required autocomplete="off" />
-                            <Form.Control.Feedback type="invalid">
-                                닉네임을 입력하세요.
-                            </Form.Control.Feedback>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text><i class="fa fa-user"></i></InputGroup.Text>
+                                </InputGroup.Prepend>                                
+                                <Form.Control type="text" required autocomplete="off" />
+                                <Form.Control.Feedback type="invalid">
+                                    닉네임을 입력하세요.
+                                </Form.Control.Feedback>
+                            </InputGroup>
                         </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group controlId="password">
                             <Form.Label>비밀번호</Form.Label>
-                            <Form.Control type="password" required />
-                            <Form.Control.Feedback type="invalid">
-                                비밀번호를 입력하세요.
-                            </Form.Control.Feedback>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text><i class="fa fa-lock"></i></InputGroup.Text>
+                                </InputGroup.Prepend>   
+                                <Form.Control type="password" required />
+                                <Form.Control.Feedback type="invalid">
+                                    비밀번호를 입력하세요.
+                                </Form.Control.Feedback>
+                            </InputGroup>
                         </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="자동로그인" defaultChecked />
+                        <Form.Group controlId="autoLogin">
+                            <Form.Check type="checkbox" label="자동 로그인" defaultChecked />
                         </Form.Group>
                         <div className="text-center">
                             <Button variant="primary" type="submit">로그인</Button>{' '}

@@ -10,7 +10,7 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Link to='/member' className='nav-link active'>출석</Link>
+                        <Link to='/attendance' className='nav-link active'>출석</Link>
                         <Link to='/member' className='nav-link'>회원</Link>
                         <Link to='/member' className='nav-link'>통계</Link>
                         <Link to='/member' className='nav-link'>출석</Link>

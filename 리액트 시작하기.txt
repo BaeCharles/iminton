@@ -1,0 +1,115 @@
+﻿* React 시작하기
+https://pro-self-studier.tistory.com/19
+
+1. node.js 설치 - https://nodejs.org/ko/
+<cmd 창에서 실행>
+node 버전확인 : node -v or node --version
+npm 버전확인 : npm -v or npm --version
+
+2. React project 설정 
+폴더만들기 ex) lecture - mkdir lecture : 필요한 폴더를 윈도우 탐색기나 명령어를 이용해서 만든다.
+pakage.json 생성 - npm init or npm init -y
+
+3. WebPack 설치
+1) 설치
+npm i react react-dom
+npm i -D webpack webpack-cli webpack-dev-server
+npm i -D @babel/core
+npm i -D @babel/plugin-proposal-class-properties
+npm i -D @babel/preset-env
+npm i -D @babel/preset-react
+npm i -D react-hot-loader
+
+2) 파일만들기 - webpack.confip.js
+3) webpack 실행 - npx webpack
+
+4. create-react-app 설치
+npm i -g create-react-app
+원하는 폴더로 이동 후
+create-react-app . <= 현재 폴더에서 환경이 구축이됨
+npm run start - 개발 실행
+npm run build - 배포 실행
+
+npm i -g serve <- 서버 설치
+serve -s build 
+
+에디터 설치
+VSCode - https://code.visualstudio.com/download
+확장팩 설치
+Auto Close Tag
+Auto Rename Tag
+ESLint
+Guides
+Import Cost
+Korean Language Pack for Visual Studio Code
+Material Icon Theme
+npm Intellisense
+open in browser - 설정에서 Open-in-browser: Default를 "Chrome"으로 변경
+React code snippets
+Relative Path
+
+git-scm 설치 https://git-scm.com/download/win
+git init
+git remote add origin http주소
+git push -u origin master
+
+
+<디자인 프래임워크>
+material UI 설치 - npm i @material-ui/core
+
+인터넷 에디터
+CodePen - https://codepen.io
+CodeSandbox - https://codesandbox.io
+
+
+자주쓰는 명령어
+React.Component
+ReactDOM.render
+
+<React 강좌>
+React 생활코딩 - https://www.youtube.com/watch?v=XMb0w3KMw00&list=PLuHgQVnccGMCRv6f8H9K5Xwsdyg4sFSdi
+https://velopert.com/2597
+
+<관련자료>
+https://lucaskim.tistory.com/52
+https://react-bootstrap.github.io/getting-started/introduction
+
+
+JSON 데이터 확인
+http://jsonviewer.stack.hu/
+https://api.androidhive.info/contacts/
+https://jsonschema.net
+https://jsonplaceholder.typicode.com/
+
+<axios 사용>
+axios.get('http://localhost:8080/members')
+    .then(res => { this.setState({members: res.data}); });
+    .catch(err => console.log(err));    
+
+axios.get, axios.post, axios.put, axios.delete, axios.head
+
+
+React Bootstrap 사용하기
+npm install --save reactstrap bootstrap
+
+Router 사용하기
+npm i --save react-router-dom
+
+yarn start 시작시 chrome 사용하기
+set BROWSER=chrome
+Create a .env
+BROWSER=chrome
+
+create-react-app 으로 프로젝트 실행하기
+create-react-app 미설치시 => npm i -g create-react-app
+설치후 
+create-react-app <폴더명>
+cd <폴더명>
+npm i --save react-router-dom
+npm i --save axios
+npm i --save react-bootstrap bootstrap
+npm i --save font-awesome
+
+한번에 npm i --save react-router-dom axios react-bootstrap bootstrap
+
+
