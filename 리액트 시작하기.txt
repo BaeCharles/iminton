@@ -73,6 +73,7 @@ https://velopert.com/2597
 <관련자료>
 https://lucaskim.tistory.com/52
 https://react-bootstrap.github.io/getting-started/introduction
+https://jinbroing.tistory.com/142
 
 
 JSON 데이터 확인
@@ -110,4 +111,4 @@ npm i --save axios
 npm i --save react-bootstrap bootstrap
 npm i --save font-awesome
 
-한번에 npm i --save react-router-dom axios react-bootstrap bootstrap
+한번에 npm i --save react-router-dom axios react-bootstrap bootstrap font-awesome
