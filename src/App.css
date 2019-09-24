@@ -8,21 +8,14 @@ body {
 .layout {
   margin: 10px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
-  /* display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   width: 100%;
-  text-align: center;
-  margin: 10% 0;
-  min-height: 200px;
-  background-color: rgba(33, 33, 33, .3);
-  align-items: center; */
 }
 
 .member_form {
   padding-top: 50px;
-  width: 70%;
+  width: 500px;
 }
