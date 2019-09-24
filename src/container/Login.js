@@ -30,9 +30,9 @@ class Login extends Component {
                             <Form.Label>닉네임</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
-                                    <InputGroup.Text><i class="fa fa-user"></i></InputGroup.Text>
+                                    <InputGroup.Text><i className="fa fa-user"></i></InputGroup.Text>
                                 </InputGroup.Prepend>                                
-                                <Form.Control type="text" required autocomplete="off" />
+                                <Form.Control type="text" required autoComplete="off" />
                                 <Form.Control.Feedback type="invalid">
                                     닉네임을 입력하세요.
                                 </Form.Control.Feedback>
@@ -42,7 +42,7 @@ class Login extends Component {
                             <Form.Label>비밀번호</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
-                                    <InputGroup.Text><i class="fa fa-lock"></i></InputGroup.Text>
+                                    <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
                                 </InputGroup.Prepend>   
                                 <Form.Control type="password" required />
                                 <Form.Control.Feedback type="invalid">

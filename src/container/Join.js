@@ -32,9 +32,9 @@ class Join extends Component {
                                 <Col>
                                     <InputGroup>
                                         <InputGroup.Prepend>
-                                            <InputGroup.Text><i class="fa fa-user"></i></InputGroup.Text>
+                                            <InputGroup.Text><i className="fa fa-user"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="text" required autocomplete="off" />
+                                        <Form.Control type="text" required autoComplete="off" />
                                         <Form.Control.Feedback type="invalid">
                                             닉네임을 입력하세요.
                                     </Form.Control.Feedback>
@@ -49,7 +49,7 @@ class Join extends Component {
                                     <Form.Label>* 비밀번호</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Prepend>
-                                            <InputGroup.Text><i class="fa fa-lock"></i></InputGroup.Text>
+                                            <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Form.Control type="password" placeholder="4자리 이상" required />
                                         <Form.Control.Feedback type="invalid">
@@ -63,7 +63,7 @@ class Join extends Component {
                                     <Form.Label>* 비밀번호 확인</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Prepend>
-                                            <InputGroup.Text><i class="fa fa-lock"></i></InputGroup.Text>
+                                            <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
                                         <Form.Control type="password" placeholder="4자리 이상" required />
                                         <Form.Control.Feedback type="invalid">
@@ -77,9 +77,9 @@ class Join extends Component {
                             <Form.Label required>* 휴대폰번호</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
-                                    <InputGroup.Text><i class="fa fa-phone"></i></InputGroup.Text>
+                                    <InputGroup.Text><i className="fa fa-phone"></i></InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <Form.Control type="tel" pattern="010\d{3,4}\d{4}" placeholder="숫자만 입력" maxlength="11" required autocomplete="off" />
+                                <Form.Control type="tel" pattern="010\d{3,4}\d{4}" placeholder="숫자만 입력" maxLength="11" required autocomplete="off" />
                                 <Form.Control.Feedback type="invalid">
                                     휴대폰번호를 입력하세요(010~). 
                                 </Form.Control.Feedback>
@@ -89,7 +89,7 @@ class Join extends Component {
                             <Form.Label>이메일주소</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
-                                    <InputGroup.Text><i class="fa fa-at"></i></InputGroup.Text>
+                                    <InputGroup.Text><i className="fa fa-at"></i></InputGroup.Text>
                                 </InputGroup.Prepend>
                                 <Form.Control type="email" autocomplete="off" />
                             </InputGroup>
