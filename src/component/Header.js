@@ -13,7 +13,7 @@ const Header = () => {
                         <Link to='/attendance' className='nav-link active'>출석</Link>
                         <Link to='/member' className='nav-link'>회원</Link>
                         <Link to='/member' className='nav-link'>통계</Link>
-                        <Link to='/member' className='nav-link'>출석</Link>
+                        <Link to='/member' className='nav-link'>회계</Link>
                         {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

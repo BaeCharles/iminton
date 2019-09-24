@@ -4,28 +4,20 @@ import { Form, Button, Col, InputGroup } from 'react-bootstrap';
 
 import Layout from '../component/Layout';
 
-class Join extends Component {
-    state = ({
-        validated: false,
-    });
+class User extends Component {
+    constructor(props) {
+        super(props);
 
-    handleSubmit = (e) => {
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
+        this.state = {
+
         }
-
-        this.setState({
-            validated: true
-        });
-    };
+    }
 
     render() {
         return (
             <div>
                 <Layout>
-                    <h3>회원가입</h3>
+                    <h3>회원 상세보기</h3>
                     <Form className='member_form' noValidate validated={this.state.validated} onSubmit={this.handleSubmit} autoComplete="off">
                         <Form.Group controlId="nick">
                             <Form.Label>* 닉네임</Form.Label>
@@ -82,7 +74,7 @@ class Join extends Component {
                                 </InputGroup.Prepend>
                                 <Form.Control type="tel" pattern="010\d{3,4}\d{4}" placeholder="숫자만 입력" maxLength="11" required />
                                 <Form.Control.Feedback type="invalid">
-                                    휴대폰번호를 입력하세요(010~). 
+                                    휴대폰번호를 입력하세요(010~).
                                 </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
@@ -106,4 +98,4 @@ class Join extends Component {
     }
 }
 
-export default Join;
+export default User;

@@ -45,12 +45,12 @@ class Member extends Component {
                                 <td>{i + 1}</td>
                                 <td className='text-left'>{member.nickname}</td>
                                 <td>{member.grade}</td>
-                                <td><Button variant="dark" size="sm"><i class='fa fa-user'></i></Button></td>
-                                <td><Button variant="outline-secondary" size="sm"><i class='fa fa-krw'></i></Button></td>
+                                <td><Button variant="dark" size="sm"><i className='fa fa-user'></i></Button></td>
+                                <td><Button variant="outline-secondary" size="sm"><i className='fa fa-krw'></i></Button></td>
                                 <td>
-                                    <i class='fa fa-minus'></i>
+                                    <i className='fa fa-minus'></i>
                                     <span>&nbsp;&nbsp;&nbsp;&nbsp;{member.unit}&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <i class='fa fa-plus'></i>
+                                    <i className='fa fa-plus'></i>
                                 </td>
                                 <td className='text-left'></td>
                             </tr>

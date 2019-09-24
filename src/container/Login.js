@@ -25,6 +25,7 @@ class Login extends Component {
         return (
             <div>
                 <Layout>
+                    <h2>로그인</h2>
                     <Form className='member_form' noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
                         <Form.Group controlId="nick">
                             <Form.Label>닉네임</Form.Label>

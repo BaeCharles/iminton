@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Button, Form, InputGroup, Table } from 'react-bootstrap';
 
 import * as Api from '../lib/Api';
 import Layout from '../component/Layout';
-import AttendList from '../component/AttendList';
+import ButtonAct from '../component/ButtonAct';
+import Shuttlecock from '../component/Shuttlecock';
 
 class Attendance extends Component {
     constructor(props) {
@@ -52,6 +53,10 @@ class Attendance extends Component {
         this.callApi(Api.getAttendList);
     }
 
+    outputEvent = () => {
+        this.callApi(Api.getAttendList);
+    }
+
     render() {
         const memberArr = this.state.members.filter(member => (member.nickname.indexOf(this.state.nickname) > -1));
         // console.log(memberArr);
@@ -59,6 +64,7 @@ class Attendance extends Component {
         return (
             <div>
                 <Layout>
+                    <h3>출석부</h3>
                     <Form className='attendance_form' onSubmit={this.handleSubmit} autoComplete='off'>
                         <Form.Group controlId="nick">
                             <InputGroup>
@@ -75,7 +81,51 @@ class Attendance extends Component {
                             </InputGroup>
                         </Form.Group>
                     </Form>
-                    <AttendList members={memberArr} />
+                    <Table bordered hover striped size='sm'>
+                        <thead>
+                            <tr className='text-center'>
+                                {/* <th width='50px'>no</th> */}
+                                <th>닉네임</th>
+                                {/* <th width='100px'>회원구분</th> */}
+                                <th width='50px'>출석</th>
+                                <th width='50px'>회비</th>
+                                <th width='80px'>콕판매</th>
+                                <th>비고</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {memberArr.map((member, i) => (
+                                <tr className='text-center' key={i}>
+                                    {/* <td>{i + 1}</td> */}
+                                    <td className='text-left'>
+                                        <Link to='/user' className='nav-link'>{member.nickname}</Link>
+                                    </td>
+                                    {/* <td>{member.grade}</td> */}
+                                    <td>
+                                        <ButtonAct 
+                                            data={member} 
+                                            gubun={1} 
+                                            adate={this.state.adate}
+                                            runFunc={this.outputEvent} />
+                                    </td>
+                                    <td>
+                                        <ButtonAct 
+                                            data={member} 
+                                            gubun={2} 
+                                            adate={this.state.adate}
+                                            runFunc={this.outputEvent} />
+                                        </td>
+                                    <td>
+                                        <Shuttlecock 
+                                            data={member}
+                                            adate={this.state.adate}
+                                            runFunc={this.outputEvent} />
+                                    </td>
+                                    <td className='text-left'></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
                 </Layout>
             </div>
         );

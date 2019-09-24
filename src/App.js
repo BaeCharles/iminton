@@ -9,6 +9,7 @@ import Join from './container/Join';
 import Login from './container/Login';
 import Member from './container/Member';
 import Attendance from './container/Attendance';
+import User from './container/User';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/join" component={Join} />
           <Route path="/login" component={Login} />
           <Route path="/member" component={Member} />
+          <Route path="/user" component={User} />
         </div>
       </Router>
     );

@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import { Button, Table } from 'react-bootstrap';
 
 import * as Api from '../lib/Api';
+import ButtonAct from './ButtonAct';
 
 class AttendList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            success : false
-        }
-    }
-
     callApi = async (func) => {
         const params = new FormData();
         params.append('adate', '2019-09-24');
@@ -54,9 +47,7 @@ class AttendList extends Component {
                                 <td className='text-left'>{member.nickname}</td>
                                 {/* <td>{member.grade}</td> */}
                                 <td>
-                                    <Button variant={(member.adate) ? 'dark' : 'outline-secondary'} size="sm" onClick={this.handleClick}>
-                                        <i className='fa fa-user'></i>
-                                    </Button>
+                                    <ButtonAct data={member} gubun={1} />
                                 </td>
                                 <td><Button variant={(member.amount > 0) ? 'dark' : 'outline-secondary'} size="sm"><i className='fa fa-krw'></i></Button></td>
                                 <td>
