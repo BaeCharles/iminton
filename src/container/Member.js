@@ -1,59 +1,89 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button, Form, Table } from 'react-bootstrap';
+import { Button, Form, InputGroup, Table } from 'react-bootstrap';
 
+import * as Api from '../lib/Api';
 import Layout from '../component/Layout';
 
 class Member extends Component {
-    state = {
-        members: []
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            members: [],
+            nickname: ''
+        }
+    }
+
+    callApi = async (func) => {
+        try {
+            const response = await func(null);
+            //console.log(response.data);
+            this.setState({
+                members: response.data.items
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     componentDidMount() {
-        this.callApi()
-            .then(res => this.setState({ members: res.items }))
-            .catch(err => console.log(err));
+        this.callApi(Api.getMemberList);
     }
 
-    callApi = async () => {
-        const response = await axios.get('http://young24y.dothome.co.kr/php/attend_list.php?adate=20190923');
-        const body = response.data;
-        console.log(body);
-        return body;
+    handleChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
     render() {
+        const memberArr = this.state.members.filter(member => (member.nickname.indexOf(this.state.nickname) > -1));
+        // console.log(memberArr);
+
         return (
             <div>
                 <Layout>
-                    <Table striped bordered hover>
+                    <h5>회원 리스트</h5>
+                    <Form autoComplete='off'>
+                        <Form.Group controlId="nick">
+                            <InputGroup>
+                                {/* <InputGroup.Prepend>
+                                    <Form.Control type='date' name="adate" value={this.state.adate} onChange={this.handleChange} />
+                                </InputGroup.Prepend> */}
+                                <Form.Control type="text" name="nickname" placeholder="닉네임"
+                                    // ref={(input) => {this.textInput = input}}
+                                    value={this.state.nickname}
+                                    onChange={this.handleChange} />
+                                <InputGroup.Append>
+                                    <Button variant="secondary" type="submit">검색</Button>
+                                </InputGroup.Append>
+                            </InputGroup>
+                        </Form.Group>
+                    </Form>
+                    <Table bordered hover striped size='sm'>
                         <thead>
                             <tr className='text-center'>
-                                <th width='50px'>#</th>
                                 <th>닉네임</th>
-                                <th width='100px'>회원구분</th>
-                                <th width='60px'>출석</th>
-                                <th width='60px'>회비</th>
-                                <th width='120px'>콕판매</th>
-                                <th width='100px'>비고</th>
+                                <th>휴대폰번호</th>
+                                <th>구분</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.members.map((member, i) => (
-                            <tr className='text-center' key={i}>
-                                <td>{i + 1}</td>
-                                <td className='text-left'>{member.nickname}</td>
-                                <td>{member.grade}</td>
-                                <td><Button variant="dark" size="sm"><i className='fa fa-user'></i></Button></td>
-                                <td><Button variant="outline-secondary" size="sm"><i className='fa fa-krw'></i></Button></td>
-                                <td>
-                                    <i className='fa fa-minus'></i>
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;{member.unit}&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <i className='fa fa-plus'></i>
-                                </td>
-                                <td className='text-left'></td>
-                            </tr>
+                            {memberArr.map((member, i) => (
+                                <tr className='text-center' key={i}>
+                                    <td className='text-left'>
+                                        <Link to='/user'>{member.nickname}</Link>
+                                    </td>
+                                    <td>
+                                        {'01091624598'.replace(/(\d\d\d)(\d\d\d\d)(\d\d\d\d)/, '$1-$2-$3')}
+                                    </td>
+                                    <td>{member.grade}</td>
+                                </tr>
                             ))}
                         </tbody>
                     </Table>

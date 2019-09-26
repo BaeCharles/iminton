@@ -2,6 +2,7 @@
 
 body {
   font-family: "Noto Sans KR", sans-serif;
+  font-size: 12pt;
 }
 
 .layout {
@@ -21,7 +22,31 @@ body {
   align-items: center; */
 }
 
-.member_form {
+/* .member_form {
   padding-top: 50px;
   width: 70%;
+} */
+
+.btn:focus {
+  box-shadow:none;
+}
+
+.fileContainer {
+  overflow: hidden;
+  position: relative;
+  padding-top: 10px;
+}
+
+.fileContainer [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
 }

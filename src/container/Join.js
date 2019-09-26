@@ -52,7 +52,7 @@ class Join extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="password" placeholder="4자리 이상" required />
+                                        <Form.Control type="password" required />
                                         <Form.Control.Feedback type="invalid">
                                             비밀번호를 입력하세요.
                                         </Form.Control.Feedback>
@@ -66,7 +66,7 @@ class Join extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="password" placeholder="4자리 이상" required />
+                                        <Form.Control type="password" required />
                                         <Form.Control.Feedback type="invalid">
                                             입력한 비밀번호를 다시 입력해주세요.
                                         </Form.Control.Feedback>

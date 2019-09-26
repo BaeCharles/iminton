@@ -74,7 +74,8 @@ https://velopert.com/2597
 https://lucaskim.tistory.com/52
 https://react-bootstrap.github.io/getting-started/introduction
 https://jinbroing.tistory.com/142
-
+https://placeimg.com/120/120/any
+http://tcpschool.com/css/css_advanced_tooltip
 
 JSON 데이터 확인
 http://jsonviewer.stack.hu/
@@ -112,3 +113,7 @@ npm i --save react-bootstrap bootstrap
 npm i --save font-awesome
 
 한번에 npm i --save react-router-dom axios react-bootstrap bootstrap font-awesome
+
+Mobx 패키지 설치
+npm i --save mobx react-mobx
+yarn add mobx react-mobx

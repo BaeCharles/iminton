@@ -64,8 +64,8 @@ class Attendance extends Component {
         return (
             <div>
                 <Layout>
-                    <h3>출석부</h3>
-                    <Form className='attendance_form' onSubmit={this.handleSubmit} autoComplete='off'>
+                    <h5>출석부</h5>
+                    <Form onSubmit={this.handleSubmit} autoComplete='off'>
                         <Form.Group controlId="nick">
                             <InputGroup>
                                 <InputGroup.Prepend>
@@ -76,7 +76,7 @@ class Attendance extends Component {
                                     value={this.state.nickname}
                                     onChange={this.handleChange} />
                                 <InputGroup.Append>
-                                    <Button variant="outline-secondary" type="submit">검색</Button>
+                                    <Button variant="secondary" type="submit">검색</Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </Form.Group>
@@ -98,7 +98,7 @@ class Attendance extends Component {
                                 <tr className='text-center' key={i}>
                                     {/* <td>{i + 1}</td> */}
                                     <td className='text-left'>
-                                        <Link to='/user' className='nav-link'>{member.nickname}</Link>
+                                        <Link to='/user'>{member.nickname}</Link>
                                     </td>
                                     {/* <td>{member.grade}</td> */}
                                     <td>
@@ -121,7 +121,7 @@ class Attendance extends Component {
                                             adate={this.state.adate}
                                             runFunc={this.outputEvent} />
                                     </td>
-                                    <td className='text-left'></td>
+                                    <td className='text-center'><i className="fa fa-comment-o" title='작성하기'></i></td>
                                 </tr>
                             ))}
                         </tbody>
