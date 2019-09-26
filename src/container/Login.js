@@ -26,7 +26,8 @@ class Login extends Component {
                     localStorage.removeItem('nickname');
                  }
 
-                this.props.history.push('/');
+                // this.props.history.push('/');
+                window.location.href = "/";
             } else {
                 this.setState({
                     validated: false,
