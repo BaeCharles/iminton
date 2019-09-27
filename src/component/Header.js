@@ -1,30 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 const Header = () => {
-    const isLogin = localStorage.getItem('isLogin');
-    const re = /(login|join)/;
-    //const isAuth = re.test(this.props.location.pathname);
-    //console.log(this.props.location.pathname);
-    //console.log('isAuth : ' + isAuth);
-    console.log('isLogin : ' + isLogin);
+    const [isLogin, setIsLogin] = useState(localStorage.getItem('isLogin'));
+    const isAuth = (/(login|join)/).test(window.location.pathname);
 
     const logout = (event) => {
         event.preventDefault();
         localStorage.removeItem('isLogin');
-        console.log('로그아웃 : ' + isLogin);
-        window.location.href = "/login";
+        setIsLogin(false);
     }
 
     return (
         <>
-            {!isLogin && <Redirect to="/login" />}
+            {!isLogin && !isAuth && <Redirect to="/login" />}
+            {isLogin && isAuth && <Redirect to="/" />}
             <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" sticky="top">
                 <Navbar.Brand as={Link} to='/'>아이민턴</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                {isLogin ? (
+                {isLogin && (
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                             <Link to='/attendance' className='nav-link active'>출석</Link>
@@ -42,8 +38,7 @@ const Header = () => {
                             {/* <Nav.Link as={Link} to='/join'>회원가입</Nav.Link> */}
                             <Nav.Link onClick={logout}>로그아웃</Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
-                    ) : ''
+                    </Navbar.Collapse>)
                 }
             </Navbar>
         </>

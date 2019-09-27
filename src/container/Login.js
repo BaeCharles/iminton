@@ -24,10 +24,9 @@ class Login extends Component {
                     localStorage.setItem('nickname', this.state.nickname);
                 } else {
                     localStorage.removeItem('nickname');
-                 }
+                }
 
-                // this.props.history.push('/');
-                window.location.href = "/";
+                this.props.history.push('/');
             } else {
                 this.setState({
                     validated: false,
@@ -74,14 +73,16 @@ class Login extends Component {
             <div>
                 <Layout>
                     <h5>로그인</h5>
-                    <Form className='member_form' noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+                    <Form className='member_form' noValidate autoComplete="off"
+                        validated={this.state.validated} 
+                        onSubmit={this.handleSubmit}>
                         <Form.Group controlId="nick">
                             <Form.Label>닉네임</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <InputGroup.Text><i className="fa fa-user"></i></InputGroup.Text>
                                 </InputGroup.Prepend>
-                                <Form.Control type="text" name="nickname" required autoComplete="off"
+                                <Form.Control type="text" name="nickname" required
                                     value={this.state.nickname}
                                     onChange={this.handleChange} />
                                 <Form.Control.Feedback type="invalid">
