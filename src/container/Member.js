@@ -80,7 +80,7 @@ class Member extends Component {
                                         <Link to='/user'>{member.nickname}</Link>
                                     </td>
                                     <td>
-                                        {'01091624598'.replace(/(\d\d\d)(\d\d\d\d)(\d\d\d\d)/, '$1-$2-$3')}
+                                        {member.hp.replace(/(\d\d\d)(\d\d\d\d)(\d\d\d\d)/, '$1-$2-$3')}
                                     </td>
                                     <td>{member.grade}</td>
                                 </tr>

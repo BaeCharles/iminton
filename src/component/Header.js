@@ -4,12 +4,12 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 const Header = () => {
-    const [isLogin, setIsLogin] = useState(localStorage.getItem('isLogin'));
+    const [isLogin, setIsLogin] = useState(sessionStorage.getItem('isLogin'));
     const isAuth = (/(login|join)/).test(window.location.pathname);
 
     const logout = (event) => {
         event.preventDefault();
-        localStorage.removeItem('isLogin');
+        sessionStorage.removeItem('isLogin');
         setIsLogin(false);
     }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Col, Row, InputGroup, Image, Card } from 'react-bootstrap';
 
+import * as Api from '../lib/Api';
 import Layout from '../component/Layout';
 
 class User extends Component {
@@ -9,8 +10,68 @@ class User extends Component {
         super(props);
 
         this.state = {
-
+            nickname: localStorage.getItem('nickname'),
+            filename: '',
+            passwd: '',
+            hp: '',
+            email: '',
+            photo: 'https://placeimg.com/500/300/any'
         }
+    }
+
+    componentDidMount() {
+        const params = {
+            nickname: this.state.nickname
+        };
+        this.getUser(params);
+    }
+
+    async getUser(params) {
+        try {
+            const { data } = await Api.getUser(params);
+            console.log(data);
+            console.log(data[0]);
+            
+            this.setState({
+                nickname: data[0].nickname,
+                passwd: data[0].passwd,
+                photo: data[0].photo
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    async procUpload(params) {
+        try {
+            const { data } = await Api.procUpload(params);
+            console.log(data);
+
+            if (data.success === true) {
+                this.setState({
+                    photo: data.url
+                });
+            } else {
+                this.setState({
+                    filename: ''
+                });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    handleChange = (event) => {
+        event.preventDefault();
+
+        this.setState({
+            filename: ''
+        });
+
+        const params = new FormData();
+        params.append('nickname', this.state.nickname);
+        params.append('photo', event.target.files[0]);
+        this.procUpload(params);
     }
 
     render() {
@@ -25,18 +86,22 @@ class User extends Component {
                             </Row>
                         </Card.Header>
                         <Card.Body>
-                            <Form className='member_form' noValidate validated={this.state.validated} onSubmit={this.handleSubmit} autoComplete="off">
+                            <Form className='member_form' noValidate autoComplete="off"
+                                validated={this.state.validated} 
+                                onSubmit={this.handleSubmit}>
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="photo" className='text-center'>
-                                        <Image src="https://placeimg.com/150/100/any" rounded /><br />
+                                        <Image src={this.state.photo} width="150" height="100" rounded /><br />
                                         {/* <p><Image src="https://placeimg.com/500/300/any" rounded /></p> */}
                                         <label className="fileContainer">
                                             <button>사진선택</button>
-                                            <input type="file" accept="image/*" />
+                                            <input type="file" name="photo" accept="image/*" 
+                                                value={this.state.filename} 
+                                                onChange={this.handleChange} />
                                         </label>
                                     </Form.Group>
                                     <Form.Group as={Col} controlId="nick">
-                                        <br /><h5>철수</h5>
+                                        <br /><h5>{this.state.nickname}</h5>
                                         <Form.Control as="select" style={{ width: '120px' }}>
                                             <option>일회원</option>
                                             <option>월회원</option>
@@ -52,7 +117,7 @@ class User extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="text" value='' readOnly />
+                                        <Form.Control type="text" value={this.state.passwd} readOnly />
                                     </InputGroup>
                                 </Form.Group>
                                 <Form.Group controlId="phone">
@@ -61,7 +126,8 @@ class User extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text><i className="fa fa-phone"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="tel" pattern="010\d{3,4}\d{4}" placeholder="숫자만 입력" maxLength="11" required />
+                                        <Form.Control type="tel" pattern="010\d{3,4}\d{4}" placeholder="숫자만 입력" maxLength="11" required
+                                            value={this.state.hp} />
                                         <Form.Control.Feedback type="invalid">
                                             휴대폰번호를 입력하세요(010~).
                                         </Form.Control.Feedback>
@@ -73,7 +139,7 @@ class User extends Component {
                                         <InputGroup.Prepend>
                                             <InputGroup.Text><i className="fa fa-at"></i></InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="email" />
+                                        <Form.Control type="email" name='email' value={this.state.email} />
                                     </InputGroup>
                                 </Form.Group>
                                 <div className="text-center">

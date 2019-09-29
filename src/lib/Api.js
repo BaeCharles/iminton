@@ -20,6 +20,10 @@ export function chkNickname(params) {
     return api.post('nick_chk.php', params);
 }
 
+export function procUpload(params) {
+    return api.post('upload_ok.php', params);
+}
+
 export function getAttendList(params) {
     return api.get('attend_list.php', {params});
 }

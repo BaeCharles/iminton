@@ -33,6 +33,11 @@ class Join extends Component {
     }
 
     async chkNickname(params) {
+        if (!this.state.nickname) {
+            alert('닉네임 입력 후 체크 바랍니다.');
+            return;
+        }
+
         try {
             const { data } = await Api.chkNickname(params);
 
@@ -95,7 +100,8 @@ class Join extends Component {
             params.append('nickname', this.state.nickname);
             params.append('passwd', this.state.passwd);
             params.append('hp', this.state.hp);
-            //params.append('email', this.state.email);
+            params.append('email', this.state.email);
+            params.append('member_cd', '1');
 
             this.procJoin(params);
         }
@@ -125,7 +131,7 @@ class Join extends Component {
                                         </Form.Control.Feedback>
                                     </InputGroup>
                                 </Col>
-                                <Col xs={3}><Button variant="warning" onClick={this.handleClick}>중복체크</Button></Col>
+                                <Col xs={3}><Button variant="warning" onClick={this.handleClick}>체크</Button></Col>
                             </Form.Row>
                         </Form.Group>
                         <Form.Row>

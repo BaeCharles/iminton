@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button, InputGroup } from 'react-bootstrap';
+import { Form, Button, InputGroup, Card } from 'react-bootstrap';
 
 import * as Api from '../lib/Api';
 import Layout from '../component/Layout';
@@ -19,7 +19,7 @@ class Login extends Component {
 
             if (data.status === 'success') {
                 // 로컬스토리지에 로그인정보 저장
-                localStorage.setItem('isLogin', true);
+                sessionStorage.setItem('isLogin', true);
                 if (this.state.autoNick) {
                     localStorage.setItem('nickname', this.state.nickname);
                 } else {
@@ -73,47 +73,51 @@ class Login extends Component {
             <div>
                 <Layout>
                     <h5>로그인</h5>
-                    <Form className='member_form' noValidate autoComplete="off"
-                        validated={this.state.validated} 
-                        onSubmit={this.handleSubmit}>
-                        <Form.Group controlId="nick">
-                            <Form.Label>닉네임</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text><i className="fa fa-user"></i></InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control type="text" name="nickname" required
-                                    value={this.state.nickname}
-                                    onChange={this.handleChange} />
-                                <Form.Control.Feedback type="invalid">
-                                    닉네임을 입력하세요.
+                    <Card>
+                        <Card.Body>
+                            <Form className='member_form' noValidate autoComplete="off"
+                                validated={this.state.validated}
+                                onSubmit={this.handleSubmit}>
+                                <Form.Group controlId="nick">
+                                    <Form.Label>닉네임</Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text><i className="fa fa-user"></i></InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control type="text" name="nickname" required
+                                            value={this.state.nickname}
+                                            onChange={this.handleChange} />
+                                        <Form.Control.Feedback type="invalid">
+                                            닉네임을 입력하세요.
                                 </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group controlId="password">
-                            <Form.Label>비밀번호</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control type="password" name="passwd" required
-                                    value={this.state.passwd}
-                                    onChange={this.handleChange} />
-                                <Form.Control.Feedback type="invalid">
-                                    비밀번호를 입력하세요.
+                                    </InputGroup>
+                                </Form.Group>
+                                <Form.Group controlId="password">
+                                    <Form.Label>비밀번호</Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text><i className="fa fa-lock"></i></InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <Form.Control type="password" name="passwd" required
+                                            value={this.state.passwd}
+                                            onChange={this.handleChange} />
+                                        <Form.Control.Feedback type="invalid">
+                                            비밀번호를 입력하세요.
                                 </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
-                        <Form.Group controlId="autoNick">
-                            <Form.Check type="checkbox" name="autoNick" label="닉네임 저장"
-                                checked={this.state.autoNick}
-                                onChange={this.handleChange} />
-                        </Form.Group>
-                        <div className="text-center">
-                            <Button variant="primary" type="submit">로그인</Button>{' '}
-                            <Button variant="primary" as={Link} to="/join">회원가입</Button>
-                        </div>
-                    </Form>
+                                    </InputGroup>
+                                </Form.Group>
+                                <Form.Group controlId="autoNick">
+                                    <Form.Check type="checkbox" name="autoNick" label="닉네임 저장"
+                                        checked={this.state.autoNick}
+                                        onChange={this.handleChange} />
+                                </Form.Group>
+                                <div className="text-center">
+                                    <Button variant="primary" type="submit">로그인</Button>{' '}
+                                    <Button variant="primary" as={Link} to="/join">회원가입</Button>
+                                </div>
+                            </Form>
+                        </Card.Body>
+                    </Card>
                 </Layout>
             </div>
         );
