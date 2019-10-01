@@ -52,9 +52,6 @@ class Member extends Component {
                     <Form autoComplete='off'>
                         <Form.Group controlId="nick">
                             <InputGroup>
-                                {/* <InputGroup.Prepend>
-                                    <Form.Control type='date' name="adate" value={this.state.adate} onChange={this.handleChange} />
-                                </InputGroup.Prepend> */}
                                 <Form.Control type="text" name="nickname" placeholder="닉네임"
                                     // ref={(input) => {this.textInput = input}}
                                     value={this.state.nickname}
@@ -77,7 +74,13 @@ class Member extends Component {
                             {memberArr.map((member, i) => (
                                 <tr className='text-center' key={i}>
                                     <td className='text-left'>
-                                        <Link to='/user'>{member.nickname}</Link>
+                                        <Link to={{
+                                            pathname: '/user',
+                                            state: {
+                                                member: member,
+                                                location: this.props.location
+                                            }
+                                        }}>{member.nickname}</Link>
                                     </td>
                                     <td>
                                         {member.hp.replace(/(\d\d\d)(\d\d\d\d)(\d\d\d\d)/, '$1-$2-$3')}

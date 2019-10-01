@@ -112,9 +112,9 @@ class Join extends Component {
             <div>
                 <Layout>
                     <h5>회원가입</h5>
-                    <Form className='member_form' noValidate 
+                    <Form className='member_form' noValidate autoComplete="off"
                         validated={this.state.validated} 
-                        onSubmit={this.handleSubmit} autoComplete="off">
+                        onSubmit={this.handleSubmit}>
                         <Form.Group controlId="nick">
                             <Form.Label>* 닉네임</Form.Label>
                             <Form.Row>

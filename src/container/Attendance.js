@@ -98,7 +98,13 @@ class Attendance extends Component {
                                 <tr className='text-center' key={i}>
                                     {/* <td>{i + 1}</td> */}
                                     <td className='text-left'>
-                                        <Link to='/user'>{member.nickname}</Link>
+                                        <Link to={{
+                                            pathname: '/user',
+                                            state: {
+                                                member: member,
+                                                location: this.props.location
+                                            }
+                                        }}>{member.nickname}</Link>
                                     </td>
                                     {/* <td>{member.grade}</td> */}
                                     <td>
