@@ -8,18 +8,18 @@ import Layout from '../component/Layout';
 class User extends Component {
     constructor(props) {
         super(props);
-
-        const { member, location } = this.props.location.state;
+        //console.log(this.props.location);
+        const { nickname, pathname } = this.props.location.state;
         this.state = {
-            nickname: (member.nickname) ? member.nickname : localStorage.getItem('nickname'),
+            nickname: (nickname) ? nickname : localStorage.getItem('nickname'),
             filename: '',
             passwd: '',
             rePasswd: '',
             hp: '',
             email: '',
-            photo: '',
+            photo: 'http://young24y.dothome.co.kr/photo/1570005332_image.png',
             validated: false,
-            pathname: location.pathname
+            pathname: pathname
         }
     }
 
@@ -66,6 +66,7 @@ class User extends Component {
     }
 
     handleChange = (event) => {
+        console.log('1');
         event.preventDefault();
 
         this.setState({
@@ -78,7 +79,8 @@ class User extends Component {
         this.procUpload(params);
     }
 
-    handleChange = (event) => {
+    handleChange2 = (event) => {
+        console.log('2');
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -90,7 +92,7 @@ class User extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        
+
         if (this.state.passwd !== this.state.rePasswd) {
             this.setState({
                 passwd: '',
@@ -99,7 +101,7 @@ class User extends Component {
             alert('입력하신 비밀번호가 서로 다릅니다.');
             return;
         }
-        
+
         this.setState({
             validated: true
         });
@@ -125,7 +127,7 @@ class User extends Component {
                         <Card.Header>
                             <Row>
                                 <Col><b>회원 상세보기</b></Col>
-                                <Col className='text-right'><i className="fa fa-close"></i></Col>
+                                <Col className='text-right'><Link to={this.state.pathname}><i className="fa fa-close"></i></Link></Col>
                             </Row>
                         </Card.Header>
                         <Card.Body>
@@ -134,7 +136,7 @@ class User extends Component {
                                 onSubmit={this.handleSubmit}>
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="photo" className='text-center'>
-                                        <Image src={this.state.photo} width="150" height="100" rounded /><br />
+                                        <Image src={this.state.photo} width="100" height="120" rounded /><br />
                                         {/* <p><Image src="https://placeimg.com/500/300/any" rounded /></p> */}
                                         <label className="fileContainer">
                                             <button>사진선택</button>
@@ -145,7 +147,7 @@ class User extends Component {
                                     </Form.Group>
                                     <Form.Group as={Col} controlId="nick">
                                         <br /><h5>{this.state.nickname}</h5>
-                                        <Form.Control as="select" style={{width: '120px'}}>
+                                        <Form.Control as="select" style={{ width: '120px' }}>
                                             <option value='1'>일회원</option>
                                             <option value='2'>월회원</option>
                                             <option value='3'>년회원</option>
@@ -165,7 +167,7 @@ class User extends Component {
                                                 </InputGroup.Prepend>
                                                 <Form.Control type="password" name="passwd"
                                                     value={this.state.passwd}
-                                                    onChange={this.handleChange} />
+                                                    onChange={this.handleChange2} />
                                                 <Form.Control.Feedback type="invalid">
                                                     비밀번호를 입력하세요.
                                         </Form.Control.Feedback>
@@ -181,7 +183,7 @@ class User extends Component {
                                                 </InputGroup.Prepend>
                                                 <Form.Control type="password" name="rePasswd"
                                                     value={this.state.rePasswd}
-                                                    onChange={this.handleChange} />
+                                                    onChange={this.handleChange2} />
                                                 <Form.Control.Feedback type="invalid">
                                                     입력한 비밀번호를 다시 입력해주세요.
                                         </Form.Control.Feedback>
@@ -197,7 +199,7 @@ class User extends Component {
                                         </InputGroup.Prepend>
                                         <Form.Control type="tel" name="hp" pattern="010\d{3,4}\d{4}" placeholder="숫자만 입력" maxLength="11" required
                                             value={this.state.hp}
-                                            onChange={this.handleChange} />
+                                            onChange={this.handleChange2} />
                                         <Form.Control.Feedback type="invalid">
                                             휴대폰번호를 입력하세요(010~).
                                 </Form.Control.Feedback>
@@ -211,7 +213,7 @@ class User extends Component {
                                         </InputGroup.Prepend>
                                         <Form.Control type="email" name="email"
                                             value={this.state.email}
-                                            onChange={this.handleChange} />
+                                            onChange={this.handleChange2} />
                                     </InputGroup>
                                 </Form.Group>
                                 <div className="text-center">

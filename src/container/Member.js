@@ -77,8 +77,8 @@ class Member extends Component {
                                         <Link to={{
                                             pathname: '/user',
                                             state: {
-                                                member: member,
-                                                location: this.props.location
+                                                nickname: member.nickname,
+                                                pathname: this.props.location.pathname
                                             }
                                         }}>{member.nickname}</Link>
                                     </td>

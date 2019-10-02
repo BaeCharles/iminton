@@ -28,13 +28,18 @@ const Header = () => {
                             <Link to='/member' className='nav-link'>통계</Link>
                             {/* <Link to='/member' className='nav-link'>회계</Link> */}
                             <NavDropdown title="회계" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">일별</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">월별</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">년별</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/daily">일별</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/monthly">월별</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/yearly">년별</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Nav.Link as={Link} to='/user'>정보수정</Nav.Link>
+                            <Nav.Link as={Link} to={{
+                                pathname: '/user',
+                                state: {
+                                    pathname: window.location.pathname
+                                }
+                            }}>정보수정</Nav.Link>
                             {/* <Nav.Link as={Link} to='/join'>회원가입</Nav.Link> */}
                             <Nav.Link onClick={logout}>로그아웃</Nav.Link>
                         </Nav>

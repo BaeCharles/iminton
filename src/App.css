@@ -50,3 +50,9 @@ body {
   text-align: right;
   top: 0;
 }
+
+input[type='date'], input[type='time'] {
+  -webkit-appearance: none;
+}
+
+.display-none{ display: none }

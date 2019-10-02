@@ -10,6 +10,9 @@ import Join from './container/Join';
 import Login from './container/Login';
 import Member from './container/Member';
 import User from './container/User';
+import Daily from './container/Daily';
+import Monthly from './container/Monthly';
+import Yearly from './container/Yearly';
 
 class App extends Component {
   render() {
@@ -21,6 +24,9 @@ class App extends Component {
         <Route path="/user" component={User} />
         <Route path="/join" component={Join} />
         <Route path="/login" component={Login} />
+        <Route path="/daily" component={Daily} />
+        <Route path="/monthly" component={Monthly} />
+        <Route path="/yearly" component={Yearly} />
       </Router>
     );
   }
