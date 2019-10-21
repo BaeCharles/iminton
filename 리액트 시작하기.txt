@@ -49,6 +49,8 @@ React code snippets
 Relative Path
 
 git-scm 설치 https://git-scm.com/download/win
+git config --global user.email "young24y@hanmail.net"
+git config --global user.name "BaeCharles"
 git init
 git remote add origin http주소
 git push -u origin master
